@@ -1,15 +1,24 @@
 import React, { Component } from 'react';
 
 export class Map extends Component {
+	state = {
+		infoWindow: {}
+	}
+
 	componentDidUpdate(prevProps, prevState) {
     if (prevProps.google !== this.props.google) {
       this.initMap();
     }
+    if (prevProps.activeMarker !== this.props.activeMarker) {
+      this.populateInfoWindow(this.props.activeMarker);
+    }
 	}
 
-	populateInfoWindow = (marker, infoWindow) => {
+	populateInfoWindow = () => {
+		const marker = this.props.activeMarker;
+		console.log(marker);
 		// clear infowindow's content
-		infoWindow.setContent('');
+		this.state.infoWindow.setContent('');
 		// fetch a Ron Swanson quote
 		fetch('http://ron-swanson-quotes.herokuapp.com/v2/quotes')
 		// convert response to object
@@ -18,20 +27,19 @@ export class Map extends Component {
 		.then(data => {
 			const quote = data[0];
 			// put the title of the marker and the quote in the infoWindow
-			infoWindow.setContent(`<h4>${marker.title}</h4><p>Thank you for your interest, have a Ron Swanson quote!</p><blockquote>${quote}</blockquote>`);
+			this.state.infoWindow.setContent(`<h4>${marker.title}</h4><p>Thank you for your interest, have a Ron Swanson quote!</p><blockquote>${quote}</blockquote>`);
 			// open the infoWindow!
-			infoWindow.open(this.map, marker);
+			this.state.infoWindow.open(this.map, marker);
 		})
 	}
 
 	initMap = () => {
-		let map,
-				infowindow;
-
 		if (this.props && this.props.google) {
-			const {google} = this.props;
-			const maps = google.maps;
-			const populateInfoWindow = this.populateInfoWindow;
+			let map,
+					infowindow,
+					markers = [];
+
+			const { google, activateMarker } = this.props;
 
 			// create a new Google Maps map and put it in the DOM element with ref 'map'
 			map = new google.maps.Map(this.map, {
@@ -41,23 +49,27 @@ export class Map extends Component {
 
 			// create one info window that the markers can use later on
 			infowindow = new google.maps.InfoWindow({content:''});
+			this.setState({infoWindow: infowindow});
 
 			// create a marker for every item in the database (JSON file in this case)
-			for (let marker of this.props.markers){
+			for (let location of this.props.locations){
 				const mark = new google.maps.Marker({
-					position: marker.position,
+					position: location.position,
 					// use a longer name if available
-					title: marker.longName || marker.name,
+					title: location.longName || location.name,
 					animation: google.maps.Animation.DROP,
 					map: map
 				});
 
 				// open the infowindow that when clicking on the marker
 				mark.addListener('click', function(){
-					// console.log('I clicked a marker!', mark.title);
-					populateInfoWindow(mark, infowindow)
+					activateMarker(mark)
 				});
+
+				markers.push(mark);
 			}
+
+			this.props.storeMarkers(markers);
 		}
 	}
 

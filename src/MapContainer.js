@@ -4,12 +4,13 @@ import Map from './Map'
 
 export class MapContainer extends Component {
 	render() {
-		const { markers, google } = this.props
-
     return (
       <Map
-				google={google}
-				markers={markers}
+				google={this.props.google}
+				locations={this.props.locations}
+				activateMarker={this.props.activateMarker}
+				activeMarker={this.props.activeMarker}
+				storeMarkers={this.props.storeMarkers}
 			/>
     );
   }
