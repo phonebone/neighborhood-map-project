@@ -25,6 +25,13 @@ html, body, #root, .App {
 	font-size: .8rem;
 	overflow-y: auto;
 }
+#controls input[type="text"] {
+	width: 100%;
+	border-radius: 4px;
+	padding: .6rem;
+
+	font-size: 1em;
+}
 #controls ul {
 	list-style: none;
 	padding: 0;
