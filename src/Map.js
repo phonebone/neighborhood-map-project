@@ -35,6 +35,15 @@ export class Map extends Component {
 
 	populateInfoWindow = () => {
 		const marker = this.props.activeMarker;
+
+		// make the marker bounce twice when selected
+		if (this.props && this.props.google) {
+			marker.setAnimation(this.props.google.maps.Animation.BOUNCE);
+			setTimeout(()=> {
+				marker.setAnimation(null);
+			}, 1400);
+		}
+
 		// clear infowindow's content
 		this.state.infoWindow.setContent('');
 		// fetch a Ron Swanson quote
