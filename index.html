@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Google Maps Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+			*, *::before, *::after {
+				box-sizing: inherit;
+			}
+			html, body {
+				height: 100%;
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			body {
+				display: flex;
+				flex-direction: row;
+			}
+			#controls {
+				min-width: 200px;
+				width: 20%;
+				height: 100%;
+				background-color: #333;
+				color: #fff;
+				padding: 1rem;
+				font-size: .8rem;
+			}
+      #map {
+        height: 100%;
+				max-width: 80%;
+				width: 80%;
+      }
+			#controls input[type="text"] {
+				width: 100%;
+				border-radius: 4px;
+				padding: 1rem;
+
+				font-size: 1em;
+			}
+			#controls ul {
+				list-style: none;
+				padding: 0;
+			}
+			#controls li button {
+				width: 100%;
+				border: 1px solid white;
+				border-radius: 4px;
+				padding: 1rem;
+
+				background-color: transparent;
+				color: #fff;
+				font-size: 1em;
+			}
+    </style>
+  </head>
+  <body>
+		<div id="controls">
+			<input type="text" id="filterInput" name="filter" value="" placeholder="filter results">
+			<ul id="markerList">
+			</ul>
+		</div>
+    <div id="map"></div>
+    <script>
+			'use strict';
+
+      let map,
+					markers = [],
+					bicycle_parking_data,
+					infowindow;
+
+			// fire the search function (update the results)
+			// every time we change the value of the searchbox.
+			document.getElementById('filterInput').addEventListener('input', (event) => { search(event.target.value) })
+
+			function init() {
+				// fetch the data for all the markers
+				fetch('./data.json')
+				// convert response to object
+				.then(response => response.json())
+				// process the data
+				.then(data => {
+					// put the data in the variable bicycle_parking_data
+					bicycle_parking_data = data;
+					// now that we have the data we can initialize the Google Maps map :-)
+					initMap();
+				})
+			}
+
+      function initMap() {
+				// create a new Google Maps map and put it in the DOM element with id 'map'
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 52.0914165, lng: 5.1147089},
+          zoom: 16
+        });
+
+				// create one info window that the markers can use later on
+				infowindow = new google.maps.InfoWindow({content:''});
+
+				// create a marker for every item in the database (JSON file in this case)
+				for (let parking_spot of bicycle_parking_data){
+					const mark = new google.maps.Marker({
+						position: parking_spot.position,
+						// use a longer name if available
+						title: parking_spot.longName || parking_spot.name,
+						animation: google.maps.Animation.DROP,
+	          map: map
+	        });
+
+					// add the marker to an array
+					markers.push(mark);
+
+					// open the infowindow that when clicking on the marker
+					mark.addListener('click', function(){
+						populateInfoWindow(mark, infowindow)
+					});
+				}
+
+				// populate the list with all the markers
+				populateList(markers);
+      }
+
+			function populateList(selection){
+				const list = document.getElementById("markerList");
+				// empty the list container (remove all list items from DOM)
+				list.innerHTML = "";
+
+				// for every marker that is in the selection
+				// put a list item in the list
+				for (let marker of selection) {
+					// create DOM elements
+					const li = document.createElement("li");
+					const btn = document.createElement("button");
+					// use the markers' title as the value for the button
+					const txt = document.createTextNode(marker.title);
+					// add DOM elements to document
+					btn.appendChild(txt);
+					li.appendChild(btn);
+					list.appendChild(li);
+					// open the infowindow that belongs to the corresponding marker when
+					// clicking on the list item
+					btn.addEventListener('click', function(){
+						populateInfoWindow(marker, infowindow)
+					});
+				}
+			}
+
+			function populateInfoWindow(marker, infoWindow){
+				// clear infowindow's content
+				infowindow.setContent('');
+				// fetch a Ron Swanson quote
+				fetch('http://ron-swanson-quotes.herokuapp.com/v2/quotes')
+				// convert response to object
+				.then(response => response.json())
+				// process the data
+				.then(data => {
+					const quote = data[0];
+					// put the title of the marker and the quote in the infowindow
+					infowindow.setContent(`<h4>${marker.title}</h4><p>Thank you for your interest, have a Ron Swanson quote!</p><blockquote>${quote}</blockquote>`);
+					// open the infowindow!
+					infowindow.open(map, marker);
+				})
+			}
+
+			// very basic search
+			function search(query){
+				// loop over all titles in markers array
+				let results = markers.filter(marker => {
+					// for each, check if the query matches
+					// if so, return.
+					return marker.title.toLowerCase().indexOf(query.toLowerCase()) !== -1
+				});
+				// show/hide markers and corresponding list items based on search results
+				filterDisplayedMarkers(results);
+			}
+
+			function filterDisplayedMarkers(selection){
+				// check wether a marker is in the selection (search results)
+				for (let marker of markers) {
+					// show/hide marker based on it being in the selection or not
+					marker.setMap(selection.includes(marker) ? map : null);
+				}
+				// show/hide list items based on it being in the selection or not
+				populateList(selection);
+			}
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBSuE7XZgQPCA_8lF06nQazCpnno12LO_Y&callback=init"
+    async defer></script>
+  </body>
+</html>

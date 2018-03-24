@@ -1,0 +1,134 @@
+[
+	{
+		"name": "Westplein",
+		"position": {
+			"lat": 52.0892385,
+			"lng": 5.1055351
+		}
+	},
+	{
+		"name": "Jaarbeursplein",
+		"position": {
+			"lat": 52.0892385,
+			"lng": 5.1071766
+		}
+	},
+	{
+		"name": "Lange Koestraat",
+		"position": {
+			"lat": 52.093504,
+			"lng": 5.113985
+		}
+	},
+	{
+		"name": "Vredenburg",
+		"position": {
+			"lat": 52.0906689,
+			"lng": 5.1114789
+		}
+	},
+	{
+		"name": "Zadelstraat",
+		"position": {
+			"lat": 52.0906689,
+			"lng": 5.1114789
+		}
+	},
+	{
+		"name": "Pop Up Neude",
+		"longName": "Neude (Pop Up Parking)",
+		"position": {
+			"lat": 52.0933716,
+			"lng": 5.1186692
+		}
+	},
+	{
+		"name": "Stadhuis",
+		"position": {
+			"lat": 52.092162,
+			"lng": 5.118755
+		}
+	},
+	{
+		"name": "UB Plein",
+		"longName": "Universiteitsbibliotheek Plein",
+		"position": {
+			"lat": 52.0947319,
+			"lng": 5.1244467
+		}
+	},
+	{
+		"name": "Keizerstraat",
+		"longName": "Universiteitsbibliotheek Keizerstraat",
+		"position": {
+			"lat": 52.0943817,
+			"lng": 5.1247068
+		}
+	},
+	{
+		"name": "Laag Catharijne",
+		"position": {
+			"lat": 52.0906953,
+			"lng": 5.1067474
+		}
+	},
+	{
+		"name": "Pop Up Vredenburg",
+		"longName": "Vredenburgplein (Pop Up Parking)",
+		"position": {
+			"lat": 52.0920565,
+			"lng": 5.1133691
+		}
+	},
+	{
+		"name": "Pop Up Janskerkhof",
+		"longName": "Janskerkhof (Pop Up Parking)",
+		"position": {
+			"lat": 52.0931054,
+			"lng": 5.1208512
+		}
+	},
+	{
+		"name": "Pop Up Mariaplaats",
+		"longName": "Mariaplaats (Pop Up Parking)",
+		"position": {
+			"lat": 52.0896307,
+			"lng": 5.1171457
+		}
+	},
+	{
+		"name": "Smakkelaarsveld",
+		"position": {
+			"lat": 52.0906953,
+			"lng": 5.1067474
+		}
+	},
+	{
+		"name": "Willemsviaduct",
+		"position": {
+			"lat": 52.0906689,
+			"lng": 5.1114789
+		}
+	},
+	{
+		"name": "NS Slijpesteijnkade",
+		"position": {
+			"lat": 52.0912268,
+			"lng": 5.1076272
+		}
+	},
+	{
+		"name": "Stationsplein (Moreelsepark)",
+		"position": {
+			"lat": 52.0889888,
+			"lng": 5.1133611
+		}
+	},
+	{
+		"name": "Stationsplein (Smakkelaarsveld)",
+		"position": {
+			"lat": 52.0892385,
+			"lng": 5.1055351
+		}
+	}
+]
