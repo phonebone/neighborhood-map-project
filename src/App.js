@@ -21,11 +21,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-				<MarkersList
+				<div id="controls">
+					<MarkersList
 					locations={bicycleParkingData}
 					activateMarker={this.activateMarker}
 					markers={this.state.markers}
-				/>
+					/>
+				</div>
         <MapContainer
 					className='mapContainer'
 					locations={bicycleParkingData}
