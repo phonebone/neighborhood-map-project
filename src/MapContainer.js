@@ -8,6 +8,7 @@ export class MapContainer extends Component {
       <Map
 				google={this.props.google}
 				locations={this.props.locations}
+				markers={this.props.markers}
 				activateMarker={this.props.activateMarker}
 				activeMarker={this.props.activeMarker}
 				storeMarkers={this.props.storeMarkers}

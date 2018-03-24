@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 export class Map extends Component {
 	state = {
+		map: {},
 		infoWindow: {}
 	}
 
@@ -12,11 +13,28 @@ export class Map extends Component {
     if (prevProps.activeMarker !== this.props.activeMarker) {
       this.populateInfoWindow(this.props.activeMarker);
     }
+    if (prevProps.locations !== this.props.locations) {
+			this.filterDisplayedMarkers()
+    }
+	}
+
+	filterDisplayedMarkers = () => {
+		const { markers, locations } = this.props;
+
+		for (let marker of markers) {
+			marker.setMap(null);
+		}
+		for (let location of locations) {
+			let name = location.longName || location.name;
+			let markerArray = markers.filter(marker => marker.title === name);
+			if(typeof markerArray !== 'undefined' && markerArray.length > 0){
+				markerArray[0].setMap(this.state.map);
+			}
+		}
 	}
 
 	populateInfoWindow = () => {
 		const marker = this.props.activeMarker;
-		console.log(marker);
 		// clear infowindow's content
 		this.state.infoWindow.setContent('');
 		// fetch a Ron Swanson quote
@@ -49,7 +67,11 @@ export class Map extends Component {
 
 			// create one info window that the markers can use later on
 			infowindow = new google.maps.InfoWindow({content:''});
-			this.setState({infoWindow: infowindow});
+
+			this.setState({
+				map: map,
+				infoWindow: infowindow
+			});
 
 			// create a marker for every item in the database (JSON file in this case)
 			for (let location of this.props.locations){

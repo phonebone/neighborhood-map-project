@@ -67,6 +67,7 @@ class App extends Component {
         <MapContainer
 					className='mapContainer'
 					locations={searchResults}
+					markers={this.state.markers}
 					activateMarker={this.activateMarker}
 					activeMarker={this.state.activeMarker}
 					storeMarkers={this.storeMarkers}
