@@ -2,8 +2,8 @@
 	{
 		"name": "Westplein",
 		"position": {
-			"lat": 52.0892385,
-			"lng": 5.1055351
+			"lat": 52.0900725,
+			"lng": 5.1049221
 		}
 	},
 	{
@@ -23,15 +23,8 @@
 	{
 		"name": "Vredenburg",
 		"position": {
-			"lat": 52.0906689,
-			"lng": 5.1114789
-		}
-	},
-	{
-		"name": "Zadelstraat",
-		"position": {
-			"lat": 52.0906689,
-			"lng": 5.1114789
+			"lat": 52.092887,
+			"lng": 5.114130
 		}
 	},
 	{
@@ -68,16 +61,16 @@
 	{
 		"name": "Laag Catharijne",
 		"position": {
-			"lat": 52.0906953,
-			"lng": 5.1067474
+			"lat": 52.091817,
+			"lng": 5.112086
 		}
 	},
 	{
 		"name": "Pop Up Vredenburg",
 		"longName": "Vredenburgplein (Pop Up Parking)",
 		"position": {
-			"lat": 52.0920565,
-			"lng": 5.1133691
+			"lat": 52.092468,
+			"lng": 5.114608
 		}
 	},
 	{
@@ -99,22 +92,22 @@
 	{
 		"name": "Smakkelaarsveld",
 		"position": {
-			"lat": 52.0906953,
-			"lng": 5.1067474
+			"lat": 52.092456,
+			"lng": 5.110429
 		}
 	},
 	{
 		"name": "Willemsviaduct",
 		"position": {
-			"lat": 52.0906689,
-			"lng": 5.1114789
+			"lat": 52.089133,
+			"lng": 5.115230
 		}
 	},
 	{
 		"name": "NS Slijpesteijnkade",
 		"position": {
-			"lat": 52.0912268,
-			"lng": 5.1076272
+			"lat": 52.091289,
+			"lng": 5.107829
 		}
 	},
 	{
@@ -127,8 +120,8 @@
 	{
 		"name": "Stationsplein (Smakkelaarsveld)",
 		"position": {
-			"lat": 52.0892385,
-			"lng": 5.1055351
+			"lat": 52.091162,
+			"lng": 5.110558
 		}
 	}
 ]
