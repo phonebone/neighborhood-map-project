@@ -55,15 +55,68 @@ export class Map extends Component {
 		.then(response => response.json())
 		// process the data
 		.then(data => {
-			const weather = data.weather[0].main;
-			const wind = {deg: data.wind.deg, speed: data.wind.speed};
-			const celcius = Math.round((data.main.temp - 273.15)*10)/10;
-			const humidity = data.main.humidity;
+			let weatherMessage = '';
+			const weather = data.weather[0].description || data.weather[0].main || undefined;
+			const wind = {
+				deg: data.wind.deg || undefined,
+				speed: data.wind.speed || undefined
+			};
+			const celcius = data.main.temp ? Math.round((data.main.temp - 273.15)*10)/10 : undefined;
+			const humidity = data.main.humidity || undefined;
 
+			if(weather !== undefined){
+				weatherMessage += `<strong>Weather:</strong> ${weather.toLowerCase()}<br/>`;
+			}
+			if(wind.deg !== undefined || wind.speed !== undefined){
+				weatherMessage += '<strong>Wind:</strong>';
+				if(wind.deg !== undefined){
+					weatherMessage += `<span id="wind-deg">
+					<span style="transform: rotate(${wind.deg}deg);"></span>
+					</span>`;
+				}
+				if(wind.speed !== undefined){
+					weatherMessage += `${wind.speed}m/s`;
+				}
+				weatherMessage += '<br/>';
+			}
+			if(celcius !== undefined){
+				weatherMessage += `<strong>Temperature:</strong> ${celcius} °C<br/>`;
+			}
+			if(humidity !== undefined) {
+				weatherMessage += `<strong>Humidity:</strong> ${humidity}%`;
+			}
+			if(weatherMessage){
+				weatherMessage = `
+				<p id="infowindow-content">
+					${weatherMessage}
+				</p>
+				<p id="data-credits">
+					Weather data provided by
+					<a href="https://openweathermap.org">
+						openweathermap.org
+					</a>
+				</p>`
+			} else {
+				weatherMessage = 'Sorry, we could not retreive any data.'
+			}
 			// put the title of the marker and the weather data in the infoWindow
-			this.state.infoWindow.setContent(`<h3>${marker.title}</h3><p id="infowindow-content"><strong>Weather:</strong> ${weather.toLowerCase()}<br/><strong>Temperature:</strong> ${celcius} °C<br/><strong>Wind:</strong><span id="wind-deg"><span style="transform: rotate(${wind.deg}deg);"></span></span>${wind.speed}m/s<br/><strong>Humidity:</strong> ${humidity}%</p>`);
+			this.state.infoWindow.setContent(`
+				<h3>${marker.title}</h3>
+				${weatherMessage}
+			`);
 
 			// open the infoWindow!
+			this.state.infoWindow.open(this.map, marker);
+		})
+		.catch(message => {
+			this.state.infoWindow.setContent(`
+				<h3>${marker.title}</h3>
+				<p id="infowindow-content">
+					<strong>Oh no!</strong>
+					<br/>
+					Something went wrong while retreiving the weather data :(
+				</p>
+			`);
 			this.state.infoWindow.open(this.map, marker);
 		})
 	}
