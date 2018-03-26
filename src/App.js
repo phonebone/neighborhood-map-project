@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import bicycleParkingData from './data.json';
+import climbingAreas from './data.json';
 import MarkersFilter from './MarkersFilter';
 import MarkersList from './MarkersList';
 import MapContainer from './MapContainer';
@@ -8,7 +8,7 @@ import './App.css';
 class App extends Component {
 	state = {
 		query: '',
-		searchResults: bicycleParkingData,
+		searchResults: climbingAreas,
 		markers: [],
 		activeMarker: {}
 	}
@@ -33,7 +33,7 @@ class App extends Component {
 
 	search = () => {
 		// loop over all titles in markers array
-		let results = bicycleParkingData.filter(marker => {
+		let results = climbingAreas.filter(marker => {
 			// for each, check if the query matches. If so, return
 			let name = marker.name;
 			return name.toLowerCase().indexOf(this.state.query.trim().toLowerCase()) !== -1
