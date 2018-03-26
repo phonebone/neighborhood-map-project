@@ -15,7 +15,7 @@ class MarkersFilter extends Component {
 			<div id="filter">
 				<input type="text" value={query} placeholder="filter results" onChange={(event) => updateQuery(event.target.value)} />
 				<div className="filterbox-label">
-					<img src={icon} className="icon" />
+					<img src={icon} className="icon" alt="filter icon" />
 				</div>
 			</div>
     )
