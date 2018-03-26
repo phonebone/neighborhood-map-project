@@ -36,7 +36,6 @@ html, body, #root, .App {
 	border-bottom-right-radius: 0;
 	border-bottom-left-radius: 4px;
 	flex: 1 0 auto;
-	/* border: 2px solid rgba(34,36,38,.15); */
 	border: 2px solid #489BD9;
 	border-right: none;
 	padding: .6rem;
@@ -45,7 +44,6 @@ html, body, #root, .App {
 .filterbox-label {
 	height: 40px;
 	width: 40px;
-	/* background-color: rgba(34,36,38,.15); */
 	background-color: rgba(0,0,0,.16);
 	border-top-left-radius: 0;
 	border-top-right-radius: 4px;
@@ -171,9 +169,6 @@ button:hover {
 #wind-deg {
 	width: 18px;
 	height: 18px;
-	/* display: flex; */
-  /* justify-content: center; */
-  /* align-items: center; */
 	display: inline-block;
 	padding: 2px;
 	border: 1px solid #000;
@@ -182,16 +177,13 @@ button:hover {
 	margin: 0 4px;
 }
 #wind-deg span {
-	/* width: 3px; */
-	/* height: 20px; */
-	/* background-color: #000; */
 	display: block;
 	margin: 0 auto;
 	width: 0;
 	height: 0;
 	border-left: 3px solid transparent;
 	border-right: 3px solid transparent;
-	border-bottom: 14px solid black;	/* hoogte */
+	border-bottom: 14px solid black;
 	transform origin: center;
 }
 #data-credits {
