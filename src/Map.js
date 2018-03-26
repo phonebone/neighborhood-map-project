@@ -34,6 +34,9 @@ export class Map extends Component {
 
 	populateInfoWindow = () => {
 		const marker = this.props.activeMarker;
+		const lat = marker.position.lat();
+		const lon = marker.position.lng();
+		const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=cbb2bcf4f41d7db1cac72f7b35777814`;
 
 		// make the marker bounce twice when selected
 		if (this.props && this.props.google) {
@@ -46,15 +49,20 @@ export class Map extends Component {
 		// clear infowindow's content
 		this.state.infoWindow.setContent('');
 
-		// fetch a Ron Swanson quote
-		fetch('http://ron-swanson-quotes.herokuapp.com/v2/quotes')
+		// fetch weather data for location
+		fetch(url)
 		// convert response to object
 		.then(response => response.json())
 		// process the data
 		.then(data => {
-			const quote = data[0];
-			// put the title of the marker and the quote in the infoWindow
-			this.state.infoWindow.setContent(`<h4>${marker.title}</h4><p>Thank you for your interest, have a Ron Swanson quote!</p><blockquote>${quote}</blockquote>`);
+			const weather = data.weather[0].main;
+			const wind = {deg: data.wind.deg, speed: data.wind.speed};
+			const celcius = Math.round((data.main.temp - 273.15)*10)/10;
+			const humidity = data.main.humidity;
+
+			// put the title of the marker and the weather data in the infoWindow
+			this.state.infoWindow.setContent(`<h3>${marker.title}</h3><p id="infowindow-content"><strong>Weather:</strong> ${weather.toLowerCase()}<br/><strong>Temperature:</strong> ${celcius} °C<br/><strong>Wind:</strong><span id="wind-deg"><span style="transform: rotate(${wind.deg}deg);"></span></span>${wind.speed}m/s<br/><strong>Humidity:</strong> ${humidity}%</p>`);
+
 			// open the infoWindow!
 			this.state.infoWindow.open(this.map, marker);
 		})
