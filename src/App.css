@@ -161,6 +161,36 @@ button:hover {
 	background-color: #fff;
 	color: #000;
 }
+#infowindow-content {
+	line-height: 1.4;
+	margin: 0.5em 0;
+}
+#wind-deg {
+	width: 18px;
+	height: 18px;
+	/* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+	display: inline-block;
+	padding: 2px;
+	border: 1px solid #000;
+	border-radius: 50%;
+	vertical-align: text-bottom;
+	margin: 0 4px;
+}
+#wind-deg span {
+	/* width: 3px; */
+	/* height: 20px; */
+	/* background-color: #000; */
+	display: block;
+	margin: 0 auto;
+	width: 0;
+	height: 0;
+	border-left: 3px solid transparent;
+	border-right: 3px solid transparent;
+	border-bottom: 14px solid black;	/* hoogte */
+	transform origin: center;
+}
 @media screen and (min-width: 40rem) {
 	#menutoggle { display: none; }
 	#markerList,
