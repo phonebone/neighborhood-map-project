@@ -3,6 +3,10 @@ import { GoogleApiWrapper } from 'google-maps-react';
 import Map from './Map'
 
 export class MapContainer extends Component {
+	// I used the google-maps-react package to include Google Maps. I looked at
+	// their documentation at https://github.com/fullstackreact/google-maps-react/
+	// to set things up. Basicly just the export at the bottom of this file and
+	// using the google prop in the Map component.
 	render() {
     return (
       <Map
