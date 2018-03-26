@@ -33,7 +33,7 @@ class App extends Component {
 		// loop over all titles in markers array
 		let results = bicycleParkingData.filter(marker => {
 			// for each, check if the query matches. If so, return
-			let name = marker.longName || marker.name;
+			let name = marker.name;
 			return name.toLowerCase().indexOf(this.state.query.trim().toLowerCase()) !== -1
 		});
 

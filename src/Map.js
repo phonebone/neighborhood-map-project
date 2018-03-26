@@ -25,8 +25,7 @@ export class Map extends Component {
 			marker.setMap(null);
 		}
 		for (let location of locations) {
-			let name = location.longName || location.name;
-			let markerArray = markers.filter(marker => marker.title === name);
+			let markerArray = markers.filter(marker => marker.title === location.name);
 			if(typeof markerArray !== 'undefined' && markerArray.length > 0){
 				markerArray[0].setMap(this.state.map);
 			}
@@ -46,6 +45,7 @@ export class Map extends Component {
 
 		// clear infowindow's content
 		this.state.infoWindow.setContent('');
+
 		// fetch a Ron Swanson quote
 		fetch('http://ron-swanson-quotes.herokuapp.com/v2/quotes')
 		// convert response to object
@@ -70,7 +70,8 @@ export class Map extends Component {
 
 			// create a new Google Maps map and put it in the DOM element with ref 'map'
 			map = new google.maps.Map(this.map, {
-				center: {lat: 52.0914165, lng: 5.1147089},
+				center: {lat: 48.359944, lng: 2.603201},
+				zoom: 11,
 				styles: [
 					{
 						"featureType": "administrative",
@@ -279,8 +280,7 @@ export class Map extends Component {
 							}
 						]
 					}
-				],
-				zoom: 16
+				]
 			});
 
 			// create one info window that the markers can use later on
@@ -296,7 +296,7 @@ export class Map extends Component {
 				const mark = new google.maps.Marker({
 					position: location.position,
 					// use a longer name if available
-					title: location.longName || location.name,
+					title: location.name,
 					animation: google.maps.Animation.DROP,
 					map: map
 				});

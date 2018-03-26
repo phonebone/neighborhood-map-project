@@ -35,12 +35,11 @@ class MarkersList extends Component {
 								onClick={() =>
 									activateMarker(
 										markers.filter(m => {
-											let name = marker.longName || marker.name;
-											return m.title === name;
+											return m.title === marker.name;
 										})[0]
 									)}>
 								<img src={icon} alt="marker icon" className="icon"/>
-								{marker.longName || marker.name}
+								{marker.name}
 							</button>
 						</li>
 					)}
