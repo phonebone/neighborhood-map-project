@@ -1,127 +1,86 @@
 [
 	{
-		"name": "Westplein",
+		"name": "Bas Cuvier",
 		"position": {
-			"lat": 52.0900725,
-			"lng": 5.1049221
+			"lat": 48.446,
+			"lng": 2.6374
 		}
 	},
 	{
-		"name": "Jaarbeursplein",
+		"name": "Apremont",
 		"position": {
-			"lat": 52.0892385,
-			"lng": 5.1071766
+			"lat": 48.438337,
+			"lng": 2.6291
 		}
 	},
 	{
-		"name": "Lange Koestraat",
+		"name": "Rocher Canon",
 		"position": {
-			"lat": 52.093504,
-			"lng": 5.113985
+			"lat": 48.464643,
+			"lng": 2.660315
 		}
 	},
 	{
-		"name": "Vredenburg",
+		"name": "Franchard Isatis",
 		"position": {
-			"lat": 52.092887,
-			"lng": 5.114130
+			"lat": 48.4113,
+			"lng": 2.61
 		}
 	},
 	{
-		"name": "Pop Up Neude",
-		"longName": "Neude (Pop Up Parking)",
+		"name": "Franchard Cuisiniere",
 		"position": {
-			"lat": 52.0933716,
-			"lng": 5.1186692
+			"lat": 48.411307,
+			"lng": 2.609775
 		}
 	},
 	{
-		"name": "Stadhuis",
+		"name": "Franchard Hautes-plaines",
 		"position": {
-			"lat": 52.092162,
-			"lng": 5.118755
+			"lat": 48.405149,
+			"lng": 2.597254
 		}
 	},
 	{
-		"name": "UB Plein",
-		"longName": "Universiteitsbibliotheek Plein",
+		"name": "Cuvier Rempart",
 		"position": {
-			"lat": 52.0947319,
-			"lng": 5.1244467
+			"lat": 48.445593,
+			"lng": 2.647436
 		}
 	},
 	{
-		"name": "Keizerstraat",
-		"longName": "Universiteitsbibliotheek Keizerstraat",
+		"name": "95.2",
 		"position": {
-			"lat": 52.0943817,
-			"lng": 5.1247068
+			"lat": 48.3859186,
+			"lng": 2.5246123
 		}
 	},
 	{
-		"name": "Laag Catharijne",
+		"name": "Le Cul de Chien",
 		"position": {
-			"lat": 52.091817,
-			"lng": 5.112086
+			"lat": 48.375315,
+			"lng": 2.522638
 		}
 	},
 	{
-		"name": "Pop Up Vredenburg",
-		"longName": "Vredenburgplein (Pop Up Parking)",
+		"name": "Roche aux Oiseaux",
 		"position": {
-			"lat": 52.092468,
-			"lng": 5.114608
+			"lat": 48.378350,
+			"lng": 2.504742
 		}
 	},
 	{
-		"name": "Pop Up Janskerkhof",
-		"longName": "Janskerkhof (Pop Up Parking)",
+		"name": "L'Elephant",
 		"position": {
-			"lat": 52.0931054,
-			"lng": 5.1208512
+			"lat": 48.293720,
+			"lng": 2.593416
 		}
 	},
 	{
-		"name": "Pop Up Mariaplaats",
-		"longName": "Mariaplaats (Pop Up Parking)",
+		"name": "Petit Bois",
 		"position": {
-			"lat": 52.0896307,
-			"lng": 5.1171457
-		}
-	},
-	{
-		"name": "Smakkelaarsveld",
-		"position": {
-			"lat": 52.092456,
-			"lng": 5.110429
-		}
-	},
-	{
-		"name": "Willemsviaduct",
-		"position": {
-			"lat": 52.089133,
-			"lng": 5.115230
-		}
-	},
-	{
-		"name": "NS Slijpesteijnkade",
-		"position": {
-			"lat": 52.091289,
-			"lng": 5.107829
-		}
-	},
-	{
-		"name": "Stationsplein (Moreelsepark)",
-		"position": {
-			"lat": 52.0889888,
-			"lng": 5.1133611
-		}
-	},
-	{
-		"name": "Stationsplein (Smakkelaarsveld)",
-		"position": {
-			"lat": 52.091162,
-			"lng": 5.110558
+			"lat": 48.263131,
+			"lng": 2.673872
 		}
 	}
 ]
