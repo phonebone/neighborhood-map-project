@@ -10,15 +10,13 @@ html, body, #root, .App {
 .App {
 	display: flex;
 	flex-direction: row;
+	padding-top: calc(40px + 2rem);
+	overflow: hidden;
 }
 #map {
 	height: 100%;
 	width: 100%;
 	margin-left: 52px;
-}
-.App {
-	padding-top: calc(40px + 2rem);
-	overflow: hidden;
 }
 #filter {
 	position: absolute;
