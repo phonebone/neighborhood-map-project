@@ -4,7 +4,6 @@ import icon from './gmmwo.svg'
 class MarkersList extends Component {
 	toggleMenu = (e) => {
 		const btn = e.target.nodeName === 'BUTTON' ? e.target : e.target.parentElement;
-		// const icn = btn.firstChild;
 		const nav = btn.parentElement;
 
 		if(nav.classList.contains('is-active')){
