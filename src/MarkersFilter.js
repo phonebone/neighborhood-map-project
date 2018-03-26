@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import icon from './filter-icon.svg'
 
 class MarkersFilter extends Component {
 	componentWillReceiveProps(nextProps){
@@ -11,7 +12,12 @@ class MarkersFilter extends Component {
 		const { query, updateQuery } = this.props
 
     return (
-			<input type="text" value={query} placeholder="filter results" onChange={(event) => updateQuery(event.target.value)} />
+			<div id="filter">
+				<input type="text" value={query} placeholder="filter results" onChange={(event) => updateQuery(event.target.value)} />
+				<div className="filterbox-label">
+					<img src={icon} className="icon" />
+				</div>
+			</div>
     )
   }
 }

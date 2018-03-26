@@ -48,21 +48,17 @@ class App extends Component {
     return (
       <div className="App">
 
-				<div id="controls">
+				<MarkersFilter
+					query={query}
+					updateQuery={this.updateQuery}
+					search={this.search}
+				/>
 
-					<MarkersFilter
-						query={query}
-						updateQuery={this.updateQuery}
-						search={this.search}
-					/>
-
-					<MarkersList
-						locations={searchResults}
-						activateMarker={this.activateMarker}
-						markers={this.state.markers}
-					/>
-
-				</div>
+				<MarkersList
+					locations={searchResults}
+					activateMarker={this.activateMarker}
+					markers={this.state.markers}
+				/>
 
         <MapContainer
 					className='mapContainer'
