@@ -7,12 +7,16 @@ export class Map extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
+		// only initialize the map if google has loaded
     if (prevProps.google !== this.props.google) {
       this.initMap();
     }
+		// if the active marker has changed, update/populate (and open) the info window
     if (prevProps.activeMarker !== this.props.activeMarker) {
       this.populateInfoWindow(this.props.activeMarker);
     }
+		// if the locations change (usually after the user changes the search term)
+		// update the shown markers. (hide or show markers depending on the search)
     if (prevProps.locations !== this.props.locations) {
 			this.filterDisplayedMarkers()
     }
@@ -21,9 +25,12 @@ export class Map extends Component {
 	filterDisplayedMarkers = () => {
 		const { markers, locations } = this.props;
 
+		// hide all markers on the map
 		for (let marker of markers) {
 			marker.setMap(null);
 		}
+		// show all the markers that are in the locations array, which contains
+		// either all the markers or just the markers that match the search query
 		for (let location of locations) {
 			let markerArray = markers.filter(marker => marker.title === location.name);
 			if(typeof markerArray !== 'undefined' && markerArray.length > 0){
@@ -36,6 +43,8 @@ export class Map extends Component {
 		const marker = this.props.activeMarker;
 		const lat = marker.position.lat();
 		const lon = marker.position.lng();
+		// construct the url for the 3rd party API (openweathermap.org) using the
+		// lattitude and longitude of the marker that was selected by the user
 		const url = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&APPID=cbb2bcf4f41d7db1cac72f7b35777814`;
 
 		// make the marker bounce twice when selected
@@ -51,11 +60,13 @@ export class Map extends Component {
 
 		// fetch weather data for location
 		fetch(url)
-		// convert response to object
+		// convert response to a javascript object
 		.then(response => response.json())
 		// process the data
 		.then(data => {
 			let weatherMessage = '';
+			// assign values from the API call to variables but set them to undefined
+			// if the API did not return a value
 			const weather = data.weather[0].description || data.weather[0].main || undefined;
 			const wind = {
 				deg: data.wind.deg || undefined,
@@ -64,9 +75,12 @@ export class Map extends Component {
 			const celcius = data.main.temp ? Math.round((data.main.temp - 273.15)*10)/10 : undefined;
 			const humidity = data.main.humidity || undefined;
 
+			// for every data point we use, check if it is not undefined (if the API
+			// returned something) and if so add it to the info window content
 			if(weather !== undefined){
 				weatherMessage += `<strong>Weather:</strong> ${weather.toLowerCase()}<br/>`;
 			}
+
 			if(wind.deg !== undefined || wind.speed !== undefined){
 				weatherMessage += '<strong>Wind:</strong>';
 				if(wind.deg !== undefined){
@@ -79,12 +93,16 @@ export class Map extends Component {
 				}
 				weatherMessage += '<br/>';
 			}
+
 			if(celcius !== undefined){
 				weatherMessage += `<strong>Temperature:</strong> ${celcius} °C<br/>`;
 			}
+
 			if(humidity !== undefined) {
 				weatherMessage += `<strong>Humidity:</strong> ${humidity}%`;
 			}
+
+			// if any data was returned from the API, add it to the infowindow now
 			if(weatherMessage){
 				weatherMessage = `
 				<p id="infowindow-content">
@@ -97,6 +115,7 @@ export class Map extends Component {
 					</a>
 				</p>`
 			} else {
+				// if no data was returned from the API, let the user know
 				weatherMessage = 'Sorry, we could not retreive any data.'
 			}
 			// put the title of the marker and the weather data in the infoWindow
@@ -108,6 +127,8 @@ export class Map extends Component {
 			// open the infoWindow!
 			this.state.infoWindow.open(this.map, marker);
 		})
+		// if something went wrong with the request (network error for example)
+		// let the user know something went wrong
 		.catch(message => {
 			this.state.infoWindow.setContent(`
 				<h3>${marker.title}</h3>
@@ -347,6 +368,8 @@ export class Map extends Component {
 			// create one info window that the markers can use later on
 			infowindow = new google.maps.InfoWindow({content:''});
 
+			// add the map and the infowindow to the state so other functions can
+			// access them (filterDisplayedMarkers and populateInfoWindow to be exact)
 			this.setState({
 				map: map,
 				infoWindow: infowindow

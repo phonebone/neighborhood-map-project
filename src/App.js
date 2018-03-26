@@ -14,10 +14,12 @@ class App extends Component {
 	}
 
 	storeMarkers = (markerArray) => {
+		// put all the Google Maps markers in state so the List view can access them
 		this.setState({markers: markerArray})
 	}
 
 	activateMarker = (marker) => {
+		// designate a marker as the active marker
 		this.setState({activeMarker: marker});
 	}
 
