@@ -21,16 +21,29 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Instructions
 
-- First, cd into the project directory and download all dependencies with `npm install`
-- Next, there are several ways to view the project:
+First, cd into the project directory and download all dependencies:
+```sh
+npm install
+```
+Next, create a production build:
+```sh
+npm run build
+```
+Finally there are several ways to view the project, three of them are listed below.
 
 ### Python SimpleHTTPServer
 
 If you have Python installed you can use the SimpleHTTPServer module. This is how you use it:
-- in your terminal, cd into the `build` directory
-- then type: python -m SimpleHTTPServer [port]
-port is optional, if you don't specify it uses the default 8000
-- visit the website in your browser at localhost:[port]
+
+In your terminal, cd into the `build` directory, then run the following command:
+
+```sh
+python -m SimpleHTTPServer 8000
+```
+
+The port number is optional, if you don't specify it uses the default 8000
+
+visit the website in your browser at localhost:[port]
 
 ### Static Server
 
