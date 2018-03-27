@@ -13,6 +13,14 @@ class App extends Component {
 		activeMarker: {}
 	}
 
+	componentDidMount() {
+		// unfortunately the google-maps-react package returns the map inside an empty
+		// div that I could not give a class name, or even better: remove alltogether.
+		// without the following code it has a height of 0 and the map is not visible
+		// to the user. Not a very elegant solution, but the best I could think of.
+		document.getElementById('map').parentElement.setAttribute("style", "width: 100%; height: 100%;");
+	}
+
 	storeMarkers = (markerArray) => {
 		// put all the Google Maps markers in state so the List view can access them
 		this.setState({markers: markerArray})
@@ -63,7 +71,6 @@ class App extends Component {
 				/>
 
         <MapContainer
-					className='mapContainer'
 					locations={searchResults}
 					markers={this.state.markers}
 					activateMarker={this.activateMarker}
