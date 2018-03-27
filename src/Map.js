@@ -154,211 +154,48 @@ export class Map extends Component {
 			map = new google.maps.Map(this.map, {
 				center: {lat: 48.359944, lng: 2.603201},
 				zoom: 11,
+				// map styles 'Clean Cut' from Scott Marshall, via snazzymaps:
+				// https://snazzymaps.com/style/77/clean-cut
 				styles: [
 					{
-						"featureType": "administrative",
-						"elementType": "labels.text.fill",
-						"stylers": [
-							{
-								"color": "#444444"
-							}
-						]
-					},
-					{
-						"featureType": "landscape",
-						"elementType": "all",
-						"stylers": [
-							{
-								"color": "#f2f2f2"
-							}
-						]
-					},
-					{
-						"featureType": "poi",
-						"elementType": "all",
-						"stylers": [
-							{
-								"visibility": "off"
-							}
-						]
-					},
-					{
 						"featureType": "road",
-						"elementType": "all",
-						"stylers": [
-							{
-								"saturation": -100
-							},
-							{
-								"lightness": 45
-							}
-						]
-					},
-					{
-						"featureType": "road.highway",
-						"elementType": "all",
-						"stylers": [
-							{
-								"visibility": "simplified"
-							}
-						]
-					},
-					{
-						"featureType": "road.highway",
 						"elementType": "geometry",
 						"stylers": [
 							{
+								"lightness": 100
+							},
+							{
 								"visibility": "simplified"
-							},
-							{
-								"color": "#ff6a6a"
-							},
-							{
-								"lightness": "0"
-							}
-						]
-					},
-					{
-						"featureType": "road.highway",
-						"elementType": "geometry.fill",
-						"stylers": [
-							{
-								"color": "#ee3123"
-							}
-						]
-					},
-					{
-						"featureType": "road.highway",
-						"elementType": "geometry.stroke",
-						"stylers": [
-							{
-								"color": "#ee3123"
-							}
-						]
-					},
-					{
-						"featureType": "road.highway",
-						"elementType": "labels.text",
-						"stylers": [
-							{
-								"visibility": "on"
-							}
-						]
-					},
-					{
-						"featureType": "road.highway",
-						"elementType": "labels.icon",
-						"stylers": [
-							{
-								"visibility": "on"
-							}
-						]
-					},
-					{
-						"featureType": "road.arterial",
-						"elementType": "all",
-						"stylers": [
-							{
-								"visibility": "on"
-							}
-						]
-					},
-					{
-						"featureType": "road.arterial",
-						"elementType": "geometry.fill",
-						"stylers": [
-							{
-								"color": "#ee3123"
-							},
-							{
-								"lightness": "62"
-							}
-						]
-					},
-					{
-						"featureType": "road.arterial",
-						"elementType": "labels.icon",
-						"stylers": [
-							{
-								"visibility": "off"
-							}
-						]
-					},
-					{
-						"featureType": "road.local",
-						"elementType": "geometry.fill",
-						"stylers": [
-							{
-								"lightness": "75"
-							}
-						]
-					},
-					{
-						"featureType": "transit",
-						"elementType": "all",
-						"stylers": [
-							{
-								"visibility": "off"
-							}
-						]
-					},
-					{
-						"featureType": "transit.line",
-						"elementType": "all",
-						"stylers": [
-							{
-								"visibility": "on"
-							}
-						]
-					},
-					{
-						"featureType": "transit.station.bus",
-						"elementType": "all",
-						"stylers": [
-							{
-								"visibility": "on"
-							}
-						]
-					},
-					{
-						"featureType": "transit.station.rail",
-						"elementType": "all",
-						"stylers": [
-							{
-								"visibility": "on"
-							}
-						]
-					},
-					{
-						"featureType": "transit.station.rail",
-						"elementType": "labels.icon",
-						"stylers": [
-							{
-								"weight": "0.01"
-							},
-							{
-								"hue": "#ff0028"
-							},
-							{
-								"lightness": "0"
 							}
 						]
 					},
 					{
 						"featureType": "water",
-						"elementType": "all",
+						"elementType": "geometry",
 						"stylers": [
 							{
 								"visibility": "on"
 							},
 							{
-								"color": "#80e4d8"
-							},
+								"color": "#C6E2FF"
+							}
+						]
+					},
+					{
+						"featureType": "poi",
+						"elementType": "geometry.fill",
+						"stylers": [
 							{
-								"lightness": "25"
-							},
+								"color": "#C5E3BF"
+							}
+						]
+					},
+					{
+						"featureType": "road",
+						"elementType": "geometry.fill",
+						"stylers": [
 							{
-								"saturation": "-23"
+								"color": "#D1D1B8"
 							}
 						]
 					}
