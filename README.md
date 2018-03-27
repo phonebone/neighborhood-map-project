@@ -21,7 +21,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Instructions
 
-There are several ways to view the project:
+- First, cd into the project directory and download all dependencies with `npm install`
+- Next, there are several ways to view the project:
 
 ### Python SimpleHTTPServer
 
