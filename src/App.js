@@ -48,7 +48,7 @@ class App extends Component {
 		const { query, searchResults } = this.state
 
     return (
-      <div className="App">
+      <main role="main" className="App">
 
 				<MarkersFilter
 					query={query}
@@ -71,7 +71,7 @@ class App extends Component {
 					storeMarkers={this.storeMarkers}
 				/>
 
-      </div>
+      </main>
     );
   }
 }

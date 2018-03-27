@@ -236,7 +236,7 @@ export class Map extends Component {
 
 	render() {
     return (
-      <div id="map" ref={(map) => { this.map = map; }}></div>
+      <div id="map" role="application" ref={(map) => { this.map = map; }}></div>
     );
   }
 }

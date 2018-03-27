@@ -22,6 +22,7 @@ class MarkersList extends Component {
 			<div id="markerList">
 				<button
 					id="menutoggle"
+					aria-label="menu"
 					onClick={this.toggleMenu}
 				>
 					<div className="hamburger"></div>

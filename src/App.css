@@ -56,7 +56,7 @@ html, body, #root, .App {
 	height: calc(100% - 72px);
 	background-color: #333;
 	color: #fff;
-	padding: 1rem 3.25rem 1rem 1rem;
+	padding: 0.5rem 2.75rem 0.5rem 0.5rem;
 	font-size: .8rem;
 	position: absolute;
 	z-index: 10;
@@ -133,7 +133,7 @@ html, body, #root, .App {
 ul {
 	list-style: none;
 	margin: 0;
-	padding: 0;
+	padding: 0.5rem;
 }
 li button {
 	width: 100%;
@@ -146,7 +146,11 @@ li button {
 	text-align: left;
 	font-size: 1em;
 
+	visibility: hidden;
 	cursor: pointer;
+}
+.is-active li button {
+	visibility: visible;
 }
 li button img {
 	height: 20px;
@@ -156,9 +160,20 @@ li button img {
 li:not(:last-of-type) {
 	margin-bottom: .25rem;
 }
-button:hover {
+button:hover,
+button:focus {
 	background-color: #fff;
 	color: #000;
+}
+#filter input:focus,
+button:focus {
+	outline: 0;
+}
+#filter input:focus {
+	box-shadow: 0 0 6px 2px rgba(255,255,255,0.8);
+}
+button:focus {
+	box-shadow: 0 0 8px 4px rgba(73,187,252,0.8);
 }
 #infowindow-content {
 	line-height: 1.4;
@@ -199,6 +214,9 @@ button:hover {
 		padding: 1rem;
 		transform: translateX(0);
 	  transform: translate3d(0, 0, 0);
+	}
+	li button {
+		visibility: visible;
 	}
 	#map {
 		margin: 0;

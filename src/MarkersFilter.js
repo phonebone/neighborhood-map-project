@@ -12,8 +12,9 @@ class MarkersFilter extends Component {
 		const { query, updateQuery } = this.props
 
     return (
-			<div id="filter">
-				<input type="text" value={query} placeholder="filter results" onChange={(event) => updateQuery(event.target.value)} />
+			<div id="filter" role="search">
+				<input type="text" id="filterbox" value={query} placeholder="filter results" role="searchbox" onChange={(event) => updateQuery(event.target.value)} />
+				<label htmlFor="filterbox" hidden>Filter the locations that are shown</label>
 				<div className="filterbox-label">
 					<img src={icon} className="icon" alt="filter icon" />
 				</div>
